@@ -104,8 +104,8 @@ filterFunction(){
     filterServerType="$3" #$3 = Server type filter
     filterEnvironment="$4" #$4 = Environment
 
-    filterSourcePath="/Auto_Offboarding/OS_Patching_Automation/report/sample_os_patching.csv";
-    filterFilePath="/Auto_Offboarding/OS_Patching_Automation/report/sample_os_patching_filter";
+    filterSourcePath="./sample_os_patching.csv";
+    filterFilePath="./sample_os_patching_filter";
     
     
 
