@@ -138,9 +138,10 @@ filterFunction(){
         filterSpecificPath="$filterFilePath-$filterServerType.csv";
         awk -v batch="$filterBatch" -v region="$filterRegion" -v type=$filterServerType -F',' '$2==batch && $4==region && $5==type' $filterSourcePath > $filterSpecificPath
 
-
-        commandOutput=$(createSSMCommandFunction "$filterEnvironment" $filterSpecificPath)
-        echo $commandOutput
+        login_enabled=`aws iam get-login-profile --user-name "MichaelDennisCresido"`
+        echo $login_enabled
+        #commandOutput=$(createSSMCommandFunction "$filterEnvironment" $filterSpecificPath)
+        #echo $commandOutput
 
         sleep 2
         #rm $filterSpecificPath
