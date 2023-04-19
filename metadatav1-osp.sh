@@ -185,7 +185,7 @@ createSSMCommandFunction(){
             echo "Tag Value: $commandTagValue"
             echo "Comment: $commandComment"
 
-            aws ssm send-command --profile $commandProfile --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
+            aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
         done < <(tail "$commandPath")
 
 
