@@ -136,7 +136,7 @@ filterFunction(){
 
     else echo "These are the server that will be patched: $filterServerType";
         #filterSpecificPath="$filterFilePath-$filterServerType.csv";
-        filterSpecificPath="./sample_os_patching_filter.csv";
+        filterSpecificPath="sample_os_patching_filter.csv";
         awk -v batch="$filterBatch" -v region="$filterRegion" -v type=$filterServerType -F',' '$2==batch && $4==region && $5==type' $filterSourcePath > $filterSpecificPath
 
         login_enabled=`aws iam get-login-profile --user-name "MichaelDennisCresido"`
