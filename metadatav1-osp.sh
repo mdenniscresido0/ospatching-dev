@@ -135,15 +135,12 @@ filterFunction(){
 
 
     else echo "These are the server that will be patched: $filterServerType";
-        #filterSpecificPath="$filterFilePath-$filterServerType.csv";
-        filterSpecificPath="/opt/jenkins-slave/workspace/Infra SRE Automation/test-pipeline/sample_os_patching_filter.csv";
+        filterSpecificPath="$filterFilePath-$filterServerType.csv";
         awk -v batch="$filterBatch" -v region="$filterRegion" -v type=$filterServerType -F',' '$2==batch && $4==region && $5==type' $filterSourcePath > $filterSpecificPath
 
         login_enabled=`aws iam get-login-profile --user-name "MichaelDennisCresido"`
-        pwd
         echo $login_enabled
-        commandOutput=$(createSSMCommandFunction "$filterEnvironment" "$filterSpecificPath")
-        #commandOutput=$(createSSMCommandFunction "$filterEnvironment" $filterSourcePath)
+        commandOutput=$(createSSMCommandFunction "$filterEnvironment" $filterSourcePath)
         echo $commandOutput
 
         sleep 2
@@ -156,43 +153,55 @@ createSSMCommandFunction(){
 
     sleep 1
     dateToday=$(date '+%Y-%m-%d')
+
+    inputProfile=$1
+    inputRegion=$2
+    inputServerType=$3
+    inputProduct=$4
+
     commandSSMDocument=$(caseDocumentNameFunction "$1")
     commandProfile=$(caseEnvironmentFunction "$1")
-    commandPath=$2
+    commandPath="./sample_os_patching.csv";
+
     echo "SSM Document Name: $commandSSMDocument"
     echo "Profile name: $commandProfile"
     echo "FilePath: $commandPath"
     while IFS="," read -r col1 col2 col3 col4 col5 col6 col7
         do
-            commandProduct="$col1"
-            commandBatch="$col2"
-            commandRegion="$col3"
-            commandServerType="$col5"
-            commandTagKey="tag:$col6"
-            commandTagValue="$col7"
-            echo $commandProduct
-            echo $commandBatch
-            echo $commandRegion
-            echo $commandTagKey
-            echo $commandTagValue
-
-            commandComment="$commandBatch-$commandProduct-$dateToday"
-
-            command="date"
+            
 
             
-            echo "Product: $commandProduct"        
-            echo "Batch name: $commandBatch"  
-            echo "Region: $commandRegion"
-            echo "Tag Key: $commandTagKey"
-            echo "Tag Value: $commandTagValue"
-            echo "Comment: $commandComment"
+                commandProduct="$col1"
+                commandBatch="$col2"
+                commandRegion="$col3"
+                commandServerType="$col5"
+                commandTagKey="tag:$col6"
+                commandTagValue="$col7"
+                echo $commandProduct
+                echo $commandBatch
+                echo $commandRegion
+                echo $commandTagKey
+                echo $commandTagValue
+        if [ "$inputRegion" == "$commandRegion" ] && [ "$inputServerType" == "$commandServerType" ] && [ "$inputProduct" == "$commandProduct" ];
+            then commandComment="$commandBatch-$commandProduct-$dateToday";
 
-            #aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
-        done < <(tail -n 200 "$commandPath")
+                command="date";
+
+                
+                echo "Product: $commandProduct"        
+                echo "Batch name: $commandBatch"  
+                echo "Region: $commandRegion"
+                echo "Tag Key: $commandTagKey"
+                echo "Tag Value: $commandTagValue"
+                echo "Comment: $commandComment"
+                #aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
+            
+        else echo "This will not be triggered.";
+        fi;
+            
+        done < <("$commandPath")
 
 
-    #aws ssm send-command --profile $commandProfile --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
 
 
 }
@@ -207,8 +216,9 @@ mainFunction(){
     mainRegion=$(caseRegionFunction "$2")
     mainServerType=$(caseServerTypeFunction "$3")
     mainProduct=$(caseProductNameFunction "$4")
-    filterLogs=$(filterFunction "$mainProduct" "$mainRegion" "$mainServerType" "$mainEnvironment")
+    #filterLogs=$(filterFunction "$mainProduct" "$mainRegion" "$mainServerType" "$mainEnvironment")
 
+    mainSSMCommandCall=$(createSSMCommandFunction $mainEnvironment $mainRegion $mainServerType $mainProduct)
     echo $filterLogs
 
 
