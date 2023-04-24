@@ -219,7 +219,7 @@ mainFunction(){
     #filterLogs=$(filterFunction "$mainProduct" "$mainRegion" "$mainServerType" "$mainEnvironment")
 
     mainSSMCommandCall=$(createSSMCommandFunction $mainEnvironment $mainRegion $mainServerType $mainProduct)
-    echo $filterLogs
+    echo $mainSSMCommandCall
 
 
 
