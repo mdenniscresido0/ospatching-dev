@@ -167,8 +167,8 @@ mainFunction(){
     echo $mainRegion $mainServerType $mainProduct
 
     echo "################################This is in the main function #######################################"
-    mainSSMCommandCall=$(createSSMCommandFunction $mainEnvironment $mainRegion $mainServerType $mainProduct)
-    echo $mainSSMCommandCall
+    #mainSSMCommandCall=$(createSSMCommandFunction $mainEnvironment $mainRegion $mainServerType $mainProduct)
+    #echo $mainSSMCommandCall
 
 
 
