@@ -141,7 +141,7 @@ filterFunction(){
 
         login_enabled=`aws iam get-login-profile --user-name "MichaelDennisCresido"`
         echo $login_enabled
-        commandOutput=$(createSSMCommandFunction "$filterEnvironment" "$filterSpecificPath")
+        commandOutput=$(createSSMCommandFunction "$filterEnvironment" "./$filterSpecificPath")
         #commandOutput=$(createSSMCommandFunction "$filterEnvironment" $filterSourcePath)
         echo $commandOutput
 
