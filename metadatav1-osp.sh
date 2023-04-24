@@ -163,10 +163,9 @@ mainFunction(){
     mainRegion=$(caseRegionFunction "$2")
     mainServerType=$(caseServerTypeFunction "$3")
     mainProduct=$(caseProductNameFunction "$4")
-    #filterLogs=$(filterFunction "$mainProduct" "$mainRegion" "$mainServerType" "$mainEnvironment")
 
     mainSSMCommandCall=$(createSSMCommandFunction $mainEnvironment $mainRegion $mainServerType $mainProduct)
-    echo $filterLogs
+    echo $mainSSMCommandCall
 
 
 
