@@ -128,21 +128,38 @@ createSSMCommandFunction(){
                 commandServerType="$col5"
                 commandTagKey="tag:$col6"
                 commandTagValue="$col7"
+        if [ "$inputServerType" == "all" ];
+            then if [ "$inputRegion" == "$commandRegionSorter" ]  && [ "$inputProduct" == "$commandBatch" ];
+                then commandComment="$commandBatch-$commandProduct-$dateToday";
 
-        if [ "$inputRegion" == "$commandRegionSorter" ] && [ "$inputServerType" == "$commandServerType" ] && [ "$inputProduct" == "$commandBatch" ];
-            then commandComment="$commandBatch-$commandProduct-$dateToday";
+                    command="date";
 
-                command="date";
+                    
+                    echo "Product: $commandProduct"        
+                    echo "Batch name: $commandBatch"  
+                    echo "Region: $commandRegion"
+                    echo "Tag Key: $commandTagKey"
+                    echo "Tag Value: $commandTagValue"
+                    echo "Comment: $commandComment"
+                    #aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
+            
+            fi;
+        else
+             if [ "$inputRegion" == "$commandRegionSorter" ]  && [ "$inputProduct" == "$commandBatch" ] && [ "$inputServerType" == "$commandServerType" ];
+                then commandComment="$commandBatch-$commandProduct-$dateToday";
 
-                
-                echo "Product: $commandProduct"        
-                echo "Batch name: $commandBatch"  
-                echo "Region: $commandRegion"
-                echo "Tag Key: $commandTagKey"
-                echo "Tag Value: $commandTagValue"
-                echo "Comment: $commandComment"
-                #aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
-           
+                    command="date";
+
+                    
+                    echo "Product: $commandProduct"        
+                    echo "Batch name: $commandBatch"  
+                    echo "Region: $commandRegion"
+                    echo "Tag Key: $commandTagKey"
+                    echo "Tag Value: $commandTagValue"
+                    echo "Comment: $commandComment"
+                    #aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
+            
+            fi;
         fi;
             
         done < <(tail -n 200 "$commandPath")
@@ -180,4 +197,3 @@ mainFunction(){
 #Fourth variable $4 = Product Name
 
 mainFunction $1 $2 $3 $4
-
