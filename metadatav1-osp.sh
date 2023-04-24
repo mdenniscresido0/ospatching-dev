@@ -98,56 +98,6 @@ esac
 }
 
 
-filterFunction(){
-    filterBatch="$1" #$1 = Batch filter
-    filterRegion="$2" #$2 = Region filter
-    filterServerType="$3" #$3 = Server type filter
-    filterEnvironment="$4" #$4 = Environment
-
-    filterSourcePath="./sample_os_patching.csv";
-    filterFilePath="./sample_os_patching_filter";
-    
-    
-
-    sleep 0.5
-    if [ $filterServerType = "all" ];
-        then echo "All servers will be patch";
-            filterNonDBSpecificPath="$filterFilePath-nondb.csv"
-            filterDBSpecificPath="$filterFilePath-db.csv"
-
-            
-            
-            awk -v batch="$filterBatch" -v region="$filterRegion" -v type=$filterServerType -F',' '$2==batch && $4==region && $5=="db"' $filterSourcePath > $filterDBSpecificPath
-            awk -v batch="$filterBatch" -v region="$filterRegion" -v type=$filterServerType -F',' '$2==batch && $4==region && $5=="db"' $filterSourcePath > $filterNonDBSpecificPath
-
-            commandOutputDB=$(commandSSMDocument "$filterEnvironment" $filterDBSpecificPath)
-            echo $commandOutputDB
-            sleep 60
-            #rm $filterDBSpecificPath
-           
-
-
-            commandOutputNonDB=$(commandSSMDocument "$filterEnvironment" $filterNonDBSpecificPath)
-            echo $commandOutputNonDB
-
-            #rm $filterNonDBSpecificPath
-            sleep 2
-
-
-    else echo "These are the server that will be patched: $filterServerType";
-        filterSpecificPath="$filterFilePath-$filterServerType.csv";
-        awk -v batch="$filterBatch" -v region="$filterRegion" -v type=$filterServerType -F',' '$2==batch && $4==region && $5==type' $filterSourcePath > $filterSpecificPath
-
-        login_enabled=`aws iam get-login-profile --user-name "MichaelDennisCresido"`
-        echo $login_enabled
-        commandOutput=$(createSSMCommandFunction "$filterEnvironment" $filterSourcePath)
-        echo $commandOutput
-
-        sleep 2
-        #rm $filterSpecificPath
-    
-    fi;
-}
 
 createSSMCommandFunction(){
 
@@ -174,15 +124,12 @@ createSSMCommandFunction(){
                 commandProduct="$col1"
                 commandBatch="$col2"
                 commandRegion="$col3"
+                commandRegionSorter="$col4"
                 commandServerType="$col5"
                 commandTagKey="tag:$col6"
                 commandTagValue="$col7"
-                echo $commandProduct
-                echo $commandBatch
-                echo $commandRegion
-                echo $commandTagKey
-                echo $commandTagValue
-        if [ "$inputRegion" == "$commandRegion" ] && [ "$inputServerType" == "$commandServerType" ] && [ "$inputProduct" == "$commandProduct" ];
+
+        if [ "$inputRegion" == "$commandRegionSorter" ] && [ "$inputServerType" == "$commandServerType" ] && [ "$inputProduct" == "$commandBatch" ];
             then commandComment="$commandBatch-$commandProduct-$dateToday";
 
                 command="date";
@@ -196,7 +143,7 @@ createSSMCommandFunction(){
                 echo "Comment: $commandComment"
                 #aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
             
-        else echo "This will not be triggered.";
+        else echo "This will not be triggered. $commandProduct $commandRegionSorter $commandServerType";
         fi;
             
         done < <(tail -n 200 "$commandPath")
@@ -219,7 +166,7 @@ mainFunction(){
     #filterLogs=$(filterFunction "$mainProduct" "$mainRegion" "$mainServerType" "$mainEnvironment")
 
     mainSSMCommandCall=$(createSSMCommandFunction $mainEnvironment $mainRegion $mainServerType $mainProduct)
-    echo $mainSSMCommandCall
+    echo $filterLogs
 
 
 
