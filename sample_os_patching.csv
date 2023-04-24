@@ -2,7 +2,7 @@ product,batch,reg,reg_lookup,server_lookup,key,value
 dev,dev,us-west-2,us,nondb,MaintWindow-Automation,REBOOTGROUP1
 dev,dev,us-east-1,us,nondb,MaintWindow-Automation,REBOOTGROUP1
 dev,dev,us-west-2,us,nondb,MaintWindow-Automation,REBOOTGROUP2
-dev,dev,us-east-1,us,dev,MaintWindow-Automation,REBOOTGROUP2
+dev,dev,us-east-1,us,nondb,MaintWindow-Automation,REBOOTGROUP2
 dev,dev,us-west-2,us,nondb,MaintWindow-Automation,REBOOTGROUP3
 dev,dev,us-east-1,us,nondb,MaintWindow-Automation,REBOOTGROUP3
 dev,dev,us-west-2,us,nondb,MaintWindow-Automation,REBOOTGROUP4
