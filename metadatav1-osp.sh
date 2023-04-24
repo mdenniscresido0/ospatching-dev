@@ -199,7 +199,7 @@ createSSMCommandFunction(){
         else echo "This will not be triggered.";
         fi;
             
-        done < <("$commandPath")
+        done < <(tail -n 200 "$commandPath")
 
 
 
