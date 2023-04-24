@@ -143,7 +143,7 @@ createSSMCommandFunction(){
                 echo "Comment: $commandComment"
                 #aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
             
-        else echo "This will not be triggered. $commandProduct $commandRegionSorter $commandServerType";
+        else echo "This will not be triggered. $commandBatch $commandRegionSorter $commandServerType";
         fi;
             
         done < <(tail -n 200 "$commandPath")
@@ -164,6 +164,9 @@ mainFunction(){
     mainServerType=$(caseServerTypeFunction "$3")
     mainProduct=$(caseProductNameFunction "$4")
 
+    echo $mainRegion $mainServerType $mainProduct
+
+    echo "################################This is in the main function #######################################"
     mainSSMCommandCall=$(createSSMCommandFunction $mainEnvironment $mainRegion $mainServerType $mainProduct)
     echo $mainSSMCommandCall
 
