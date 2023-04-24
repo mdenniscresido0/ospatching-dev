@@ -142,8 +142,7 @@ createSSMCommandFunction(){
                 echo "Tag Value: $commandTagValue"
                 echo "Comment: $commandComment"
                 #aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
-            
-        else echo "This will not be triggered. $commandBatch $commandRegionSorter $commandServerType";
+           
         fi;
             
         done < <(tail -n 200 "$commandPath")
