@@ -131,7 +131,7 @@ paramSSMCommandFunction(){
                 commandServerType="$col5"
                 commandTagKey="tag:$col6"
                 commandTagValue="$col7"
-        if [ "$inputServerType" == "all" ] && [ "$inputRegion" == "all"];
+        if [ "$inputServerType" == "all" ] && [ "$inputRegion" == "all"] ;
             then if [ "$inputProduct" == "$commandBatch" ];
                 then ssmCommand=$(createSSMCommand $commandProduct $commandBatch $commandRegion $commandTagKey $commandTagValue $commandComment $commandSSMDocument) 
                     echo $ssmCommand
