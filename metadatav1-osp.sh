@@ -121,9 +121,7 @@ paramSSMCommandFunction(){
     while IFS="," read -r col1 col2 col3 col4 col5 col6 col7
         do
              #sleep 0.5
-            
 
-            
                 commandProduct="$col1"
                 commandBatch="$col2"
                 commandRegion="$col3"
@@ -131,25 +129,26 @@ paramSSMCommandFunction(){
                 commandServerType="$col5"
                 commandTagKey="tag:$col6"
                 commandTagValue="$col7"
+
         if [ "$inputServerType" == "all" ] && [ "$inputRegion" == "all"];
             then if [ "$inputProduct" == "$commandBatch" ];
-                then ssmCommand=$(createSSMCommand $commandProduct $commandBatch $commandRegion $commandTagKey $commandTagValue $commandComment $commandSSMDocument) 
+                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument") 
                     echo $ssmCommand
                 fi;
         elif [ "$inputServerType" == "all" ] && [ "$inputRegion" != "all" ];  
             then if [ "$inputRegion" == "$commandRegionSorter" ]  && [ "$inputProduct" == "$commandBatch" ];
-                then ssmCommand=$(createSSMCommand $commandProduct $commandBatch $commandRegion $commandTagKey $commandTagValue $commandComment $commandSSMDocument) 
+                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument") 
                     echo $ssmCommand
-
                 fi;
         elif [ "$inputServerType" != "all" ] && [ "$inputRegion" == "all" ];
             then if [ "$inputServerType" == "$commandServerType" ]  && [ "$inputProduct" == "$commandBatch" ];
-                then ssmCommand=$(createSSMCommand $commandProduct $commandBatch $commandRegion $commandTagKey $commandTagValue $commandComment $commandSSMDocument) 
+                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument") 
                     echo $ssmCommand
                 fi;     
         else
              if [ "$inputRegion" == "$commandRegionSorter" ]  && [ "$inputProduct" == "$commandBatch" ] && [ "$inputServerType" == "$commandServerType" ];
-                then ssmCommand=$(createSSMCommand $commandProduct $commandBatch $commandRegion $commandTagKey $commandTagValue $commandComment $commandSSMDocument) 
+                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument") 
+                    echo $ssmCommand
             fi;
         fi;
             
