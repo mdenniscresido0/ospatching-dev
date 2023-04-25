@@ -132,22 +132,22 @@ paramSSMCommandFunction(){
 
         if [ "$inputServerType" == "all" ] && [ "$inputRegion" == "all"];
             then if [ "$inputProduct" == "$commandBatch" ];
-                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument") 
+                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument");
                     echo $ssmCommand
                 fi;
         elif [ "$inputServerType" == "all" ] && [ "$inputRegion" != "all" ];  
             then if [ "$inputRegion" == "$commandRegionSorter" ]  && [ "$inputProduct" == "$commandBatch" ];
-                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument") 
+                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument");
                     echo $ssmCommand
                 fi;
         elif [ "$inputServerType" != "all" ] && [ "$inputRegion" == "all" ];
             then if [ "$inputServerType" == "$commandServerType" ]  && [ "$inputProduct" == "$commandBatch" ];
-                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument") 
+                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument");
                     echo $ssmCommand
                 fi;     
         else
              if [ "$inputRegion" == "$commandRegionSorter" ]  && [ "$inputProduct" == "$commandBatch" ] && [ "$inputServerType" == "$commandServerType" ];
-                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument") 
+                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument");
                     echo $ssmCommand
             fi;
         fi;
@@ -201,7 +201,7 @@ mainFunction(){
     echo $mainRegion $mainServerType $mainProduct
 
     echo "################################This is in the main function #######################################"
-    mainSSMCommandCall=$(paramSSMCommandFunction $mainEnvironment $mainRegion $mainServerType $mainProduct)
+    mainSSMCommandCall=$(paramSSMCommandFunction "$mainEnvironment" "$mainRegion" "$mainServerType" "$mainProduct")
     echo $mainSSMCommandCall
 
 
