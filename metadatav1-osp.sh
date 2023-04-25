@@ -101,7 +101,7 @@ esac
 
 createSSMCommandFunction(){
 
-    sleep 1
+   
     dateToday=$(date '+%Y-%m-%d')
 
     inputProfile=$1
@@ -118,6 +118,7 @@ createSSMCommandFunction(){
     echo "FilePath: $commandPath"
     while IFS="," read -r col1 col2 col3 col4 col5 col6 col7
         do
+             sleep 0.5
             
 
             
@@ -141,8 +142,9 @@ createSSMCommandFunction(){
                     echo "Tag Key: $commandTagKey"
                     echo "Tag Value: $commandTagValue"
                     echo "Comment: $commandComment"
-                    #aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
-            
+                    commandId=$(`aws ssm send-command --profile deltekdev-cli --region us-east-1 --document-name "AWS-RunPowerShellScript" --parameters 'commands=["date"]' --targets "Key=tag:MaintWindow-Automation,Values=REBOOTGROUP6" --comment "test command" --query 'Command.CommandId' --output text)
+
+                    echo "Command ID: $commandId - $commandComment"
             fi;
         else
              if [ "$inputRegion" == "$commandRegionSorter" ]  && [ "$inputProduct" == "$commandBatch" ] && [ "$inputServerType" == "$commandServerType" ];
@@ -157,12 +159,13 @@ createSSMCommandFunction(){
                     echo "Tag Key: $commandTagKey"
                     echo "Tag Value: $commandTagValue"
                     echo "Comment: $commandComment"
-                    #aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment"
-            
+                    commandId=$(`aws ssm send-command --profile deltekdev-cli --region us-east-1 --document-name "AWS-RunPowerShellScript" --parameters 'commands=["date"]' --targets "Key=tag:MaintWindow-Automation,Values=REBOOTGROUP6" --comment "test command" --query 'Command.CommandId' --output text)
+
+                    echo "Command ID: $commandId - $commandComment"
             fi;
         fi;
             
-        done < <(tail -n 200 "$commandPath")
+        done < <(tail -n 500 "$commandPath")
 
 
 
