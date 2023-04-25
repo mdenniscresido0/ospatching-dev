@@ -118,7 +118,7 @@ createSSMCommandFunction(){
     echo "FilePath: $commandPath"
     while IFS="," read -r col1 col2 col3 col4 col5 col6 col7
         do
-             sleep 0.5
+             #sleep 0.5
             
 
             
