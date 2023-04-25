@@ -146,7 +146,7 @@ paramSSMCommandFunction(){
                     echo $ssmCommand
                 fi;     
         else
-             if [ "$inputRegion" == "$commandRegionSorter" ]  && [ "$inputProduct" == "$commandBatch" ] && [ "$inputServerType" == "$commandServerType" ];
+            if [ "$inputRegion" == "$commandRegionSorter" ]  && [ "$inputProduct" == "$commandBatch" ] && [ "$inputServerType" == "$commandServerType" ];
                 then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument");
                     echo $ssmCommand
             fi;
@@ -161,13 +161,13 @@ paramSSMCommandFunction(){
 
 createSSMCommand(){
 
-    commandProduct=$1
-    commandBatch=$2
-    commandRegion=$3
-    commandTagKey=$4
-    commandTagValue=$5
-    commandComment=$6
-    commandSSMDocument=$7
+    commandProduct="$1"
+    commandBatch="$2"
+    commandRegion="$3"
+    commandTagKey="$4"
+    commandTagValue="$5"
+    commandComment="$6"
+    commandSSMDocument="$7"
     dateToday=$(date '+%Y-%m-%d')
     
         commandComment="$commandBatch-$commandProduct-$dateToday";
