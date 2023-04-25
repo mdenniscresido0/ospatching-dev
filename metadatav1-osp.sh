@@ -182,8 +182,8 @@ createSSMCommand(){
         echo "Tag Value: $commandTagValue"
         echo "Comment: $commandComment"
         
-        #commandId=$(aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment" --query 'Command.CommandId' --output text)
-        #echo "Command ID: $commandId - $commandComment"    
+        commandId=$(aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment" --query 'Command.CommandId' --output text)
+        echo "Command ID: $commandId - $commandComment"    
 
 }
 
