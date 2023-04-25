@@ -62,7 +62,9 @@ caseRegionFunction(){
    "AP") echo "ap"
    ;;  
    "EU") echo "eu"
-   ;;      
+   ;; 
+   "ALL") echo "all"
+   ;;              
 esac   
 }
 
