@@ -62,7 +62,9 @@ caseRegionFunction(){
    "AP") echo "ap"
    ;;  
    "EU") echo "eu"
-   ;;      
+   ;; 
+   "ALL") echo "all"
+   ;;              
 esac   
 }
 
@@ -99,10 +101,10 @@ esac
 
 
 
-createSSMCommandFunction(){
+paramSSMCommandFunction(){
 
    
-    dateToday=$(date '+%Y-%m-%d')
+    
 
     inputProfile=$1
     inputRegion=$2
@@ -119,9 +121,7 @@ createSSMCommandFunction(){
     while IFS="," read -r col1 col2 col3 col4 col5 col6 col7
         do
              #sleep 0.5
-            
 
-            
                 commandProduct="$col1"
                 commandBatch="$col2"
                 commandRegion="$col3"
@@ -129,39 +129,26 @@ createSSMCommandFunction(){
                 commandServerType="$col5"
                 commandTagKey="tag:$col6"
                 commandTagValue="$col7"
-        if [ "$inputServerType" == "all" ];
+
+        if [ "$inputServerType" == "all" ] && [ "$inputRegion" == "all"];
+            then if [ "$inputProduct" == "$commandBatch" ];
+                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument");
+                    echo $ssmCommand
+                fi;
+        elif [ "$inputServerType" == "all" ] && [ "$inputRegion" != "all" ];  
             then if [ "$inputRegion" == "$commandRegionSorter" ]  && [ "$inputProduct" == "$commandBatch" ];
-                then commandComment="$commandBatch-$commandProduct-$dateToday";
-
-                    command="date";
-
-                    
-                    echo "Product: $commandProduct"        
-                    echo "Batch name: $commandBatch"  
-                    echo "Region: $commandRegion"
-                    echo "Tag Key: $commandTagKey"
-                    echo "Tag Value: $commandTagValue"
-                    echo "Comment: $commandComment"
-                    #commandId=$(`aws ssm send-command --profile deltekdev-cli --region us-east-1 --document-name "AWS-RunPowerShellScript" --parameters 'commands=["date"]' --targets "Key=tag:MaintWindow-Automation,Values=REBOOTGROUP6" --comment "test command" --query 'Command.CommandId' --output text)
-                    commandId=$(aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment" --query 'Command.CommandId' --output text)
-                    echo "Command ID: $commandId - $commandComment"
-            fi;
+                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument");
+                    echo $ssmCommand
+                fi;
+        elif [ "$inputServerType" != "all" ] && [ "$inputRegion" == "all" ];
+            then if [ "$inputServerType" == "$commandServerType" ]  && [ "$inputProduct" == "$commandBatch" ];
+                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument");
+                    echo $ssmCommand
+                fi;     
         else
-             if [ "$inputRegion" == "$commandRegionSorter" ]  && [ "$inputProduct" == "$commandBatch" ] && [ "$inputServerType" == "$commandServerType" ];
-                then commandComment="$commandBatch-$commandProduct-$dateToday";
-
-                    command="date";
-
-                    
-                    echo "Product: $commandProduct"        
-                    echo "Batch name: $commandBatch"  
-                    echo "Region: $commandRegion"
-                    echo "Tag Key: $commandTagKey"
-                    echo "Tag Value: $commandTagValue"
-                    echo "Comment: $commandComment"
-                    #commandId=$(`aws ssm send-command --profile deltekdev-cli --region us-east-1 --document-name "AWS-RunPowerShellScript" --parameters 'commands=["date"]' --targets "Key=tag:MaintWindow-Automation,Values=REBOOTGROUP6" --comment "test command" --query 'Command.CommandId' --output text)
-                    commandId=$(aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment" --query 'Command.CommandId' --output text)
-                    echo "Command ID: $commandId - $commandComment"
+            if [ "$inputRegion" == "$commandRegionSorter" ]  && [ "$inputProduct" == "$commandBatch" ] && [ "$inputServerType" == "$commandServerType" ];
+                then ssmCommand=$(createSSMCommand "$commandProduct" "$commandBatch" "$commandRegion" "$commandTagKey" "$commandTagValue" "$commandComment" "$commandSSMDocument");
+                    echo $ssmCommand
             fi;
         fi;
             
@@ -169,6 +156,34 @@ createSSMCommandFunction(){
 
 
 
+
+}
+
+createSSMCommand(){
+
+    commandProduct="$1"
+    commandBatch="$2"
+    commandRegion="$3"
+    commandTagKey="$4"
+    commandTagValue="$5"
+    commandComment="$6"
+    commandSSMDocument="$7"
+    dateToday=$(date '+%Y-%m-%d')
+    
+        commandComment="$commandBatch-$commandProduct-$dateToday";
+
+        command="date";
+
+                    
+        echo "Product: $commandProduct"        
+        echo "Batch name: $commandBatch"  
+        echo "Region: $commandRegion"
+        echo "Tag Key: $commandTagKey"
+        echo "Tag Value: $commandTagValue"
+        echo "Comment: $commandComment"
+        
+        #commandId=$(aws ssm send-command --region $commandRegion --document-name "$commandSSMDocument" --parameters 'commands=["$command"]' --targets "Key=$commandTagKey,Values=$commandTagValue" --comment "$commandComment" --query 'Command.CommandId' --output text)
+        #echo "Command ID: $commandId - $commandComment"    
 
 }
 
@@ -186,7 +201,7 @@ mainFunction(){
     echo $mainRegion $mainServerType $mainProduct
 
     echo "################################This is in the main function #######################################"
-    mainSSMCommandCall=$(createSSMCommandFunction $mainEnvironment $mainRegion $mainServerType $mainProduct)
+    mainSSMCommandCall=$(paramSSMCommandFunction "$mainEnvironment" "$mainRegion" "$mainServerType" "$mainProduct")
     echo $mainSSMCommandCall
 
 
