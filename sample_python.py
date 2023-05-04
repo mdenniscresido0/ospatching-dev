@@ -17,6 +17,7 @@ print(command_id)
 
 f = open('sample_os_patching.csv')
 csv_f = csv.reader(f)
-filtered = filter(lambda p: ('pim' == p[1] and 'db' == p[4]) , csv_f)
+#filtered = filter(lambda p: ('pim' == p[1] and 'db' == p[4]) , csv_f)
 
-print(filtered)
+for e in filter(lambda p: ('pim' == p[1] and 'db' == p[4]) , csv_f):
+    print(e)
