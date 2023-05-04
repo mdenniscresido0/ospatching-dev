@@ -1,3 +1,4 @@
+Import-Module AWSPowerShell
 $date=get-date
 
 echo "Today is $date."
