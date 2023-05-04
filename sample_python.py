@@ -15,7 +15,7 @@ print(command_id)
 
 
 
-f = open('attendees1.csv')
+f = open('sample_os_patching.csv')
 csv_f = csv.reader(f)
 
 for row in csv_f:
