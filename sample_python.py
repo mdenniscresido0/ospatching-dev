@@ -15,29 +15,18 @@ print(command_id)
 
 
 
-#f = open('sample_os_patching.csv')
-#csv_f = csv.reader(f)
+f = open('sample_os_patching.csv')
+csv_f = csv.reader(f)
 
-#product = 'pim'
-#server = 'db'
-#filtered = filter(lambda p: ('pim' == p[1] and 'db' == p[4]) , csv_f)
-#result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
+product = 'pim'
+server = 'db'
+filtered = filter(lambda p: ('pim' == p[1] and 'db' == p[4]) , csv_f)
+result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
 
 
 
 
 #for e in result:
     #print(e)
-numbers = [1, 3, 10, 45, 6, 50]
-
-# Filtering function
-def is_even(x):
-    return x % 2 == 0
-
-
-# Use filter()
-list(filter(is_even, numbers))
-
-
-# Use a list comprehension
-[number for number in numbers if is_even(number)]
+for i in range(len(result)):
+    print(result[i])    
