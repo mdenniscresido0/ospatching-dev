@@ -13,7 +13,7 @@ command_id = response['Command']['CommandId']
 print(command_id)
 
 pandas.set_option('expand_frame_repr', False)
-df = pandas.read_csv('c:\\yay\\sample1.csv')
+df = pandas.read_csv('./sample_os_patching.csv')
 print('---Here are all 7 lines---')
 print(df)
 print('---Here are the first 5 lines---')
