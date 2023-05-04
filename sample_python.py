@@ -34,6 +34,6 @@ with open('sample_os_patching.csv', 'r') as input_file:
     results = filter(lambda row: (product == row[1] and server == row[4]), lines[1:])
     
 
-    for res in range(100):
+    for res in range(len(results)):
         print(res)
-        print(results[res])
+       
