@@ -23,5 +23,6 @@ server = 'db'
 #filtered = filter(lambda p: ('pim' == p[1] and 'db' == p[4]) , csv_f)
 result = filter(lambda p: (product == p[1] and server == p[4]) , csv_f)
 
+print(list(result))
 for e in result:
     print(e)
