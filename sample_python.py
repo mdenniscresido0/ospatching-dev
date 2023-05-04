@@ -31,5 +31,9 @@ with open('sample_os_patching.csv', 'r') as input_file:
     csv_reader = csv.reader(input_file)#, delimiter=',')
     lines = [i for i in csv_reader]
     header = lines[0]
-    print(list(filter(lambda row: (product == row[1] and server == row[4]), lines[1:])))
+    results = filter(lambda row: (product == row[1] and server == row[4]), lines[1:])
     
+
+    for res in range(100):
+        print(res)
+        print(results[res])
