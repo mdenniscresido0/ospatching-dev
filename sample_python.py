@@ -15,25 +15,25 @@ print(command_id)
 
 
 
-#f = open('sample_os_patching.csv')
-#csv_f = csv.reader(f)
+f = open('sample_os_patching.csv')
+csv_f = csv.reader(f)
 
 product = 'pim'
 server = 'db'
 #filtered = filter(lambda p: ('pim' == p[1] and 'db' == p[4]) , csv_f)
-#result = filter(lambda p: (product == p[1] and server == p[4]) , csv_f)
+result = filter(lambda p: (product == p[1] and server == p[4]) , csv_f)
 
-#print(list(result))
+list(result)
 #for e in result:
-   # print(e)
+    #print(e)
 
-with open('sample_os_patching.csv', 'r') as input_file:
-    csv_reader = csv.reader(input_file)#, delimiter=',')
-    lines = [i for i in csv_reader]
-    header = lines[0]
-    results = filter(lambda row: (product == row[1] and server == row[4]), lines[1:])
+#with open('sample_os_patching.csv', 'r') as input_file:
+   # csv_reader = csv.reader(input_file)#, delimiter=',')
+   # lines = [i for i in csv_reader]
+    #header = lines[0]
+    #results = filter(lambda row: (product == row[1] and server == row[4]), lines[1:])
     
 
-    for res in range(len(results)):
-        print(res)
+    #for res in range(len(results)):
+        #print(res)
        
