@@ -27,7 +27,7 @@ server = 'db'
 #for e in result:
    # print(e)
 
-with open('test_csv.csv', 'r') as input_file:
+with open('sample_os_patching.csv', 'r') as input_file:
     csv_reader = csv.reader(input_file)#, delimiter=',')
     lines = [i for i in csv_reader]
     header = lines[0]
