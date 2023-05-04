@@ -17,6 +17,6 @@ print(command_id)
 
 f = open('sample_os_patching.csv')
 csv_f = csv.reader(f)
-
-for row in csv_f:
+filtered = filter(lambda p: ('pim' == p[1]), csv_f)
+for row in filtered:
   print(row)
