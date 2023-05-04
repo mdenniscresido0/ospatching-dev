@@ -470,3 +470,11 @@ vp14,vtent,us-east-1,us,db,maintwindow-vantageent-vp14,rebootgroup1-dbonly
 vp14,vtent,us-east-1,us,nondb,maintwindow-vantageent-vp14,rebootgroup2-nondb
 vp14,vtent,us-west-2,us,db,maintwindow-vantageent-vp14,rebootgroup1-dbonly
 vp14,vtent,us-west-2,us,nondb,maintwindow-vantageent-vp14,rebootgroup2-nondb
+vp15,vtent,us-east-1,us,db,maintwindow-vantageent-vp15,rebootgroup1-dbonly
+vp15,vtent,us-east-1,us,nondb,maintwindow-vantageent-vp15,rebootgroup2-nondb
+vp15,vtent,us-west-2,us,db,maintwindow-vantageent-vp15,rebootgroup1-dbonly
+vp15,vtent,us-west-2,us,nondb,maintwindow-vantageent-vp15,rebootgroup2-nondb
+vp15,vtent,eu-west-1,us,db,maintwindow-vantageent-vp15,rebootgroup1-dbonly
+vp15,vtent,eu-west-1,us,nondb,maintwindow-vantageent-vp15,rebootgroup2-nondb
+vp15,vtent,eu-central-1,us,db,maintwindow-vantageent-vp15,rebootgroup1-dbonly
+vp15,vtent,eu-central-1,us,nondb,maintwindow-vantageent-vp15,rebootgroup2-nondb
