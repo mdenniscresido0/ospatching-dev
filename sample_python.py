@@ -15,7 +15,7 @@ print(command_id)
 
 
 
-f = open('sample_os_patching.csv')
+f = (open('sample_os_patching.csv'),delimiter=',')
 csv_f = csv.reader(f)
 filtered = filter(lambda p: ('pim' == p[1]), csv_f)
 for row in filtered:
