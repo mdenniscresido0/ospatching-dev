@@ -26,10 +26,10 @@ try:
     
     for exception_item in exception_list:
         print(exception_item)
-        resultFinal = filter(lambda p: (exception_item != p[0]), result)
-        
-        result = resultFinal
-        print(result)
+        resultF = filter(lambda p: (exception_item != p[0]), result)
+        result = resultF    
+        #resultFinal = filter(lambda p: (exception_item != p[0]), result)
+        #result = resultFinal
 
         
     
