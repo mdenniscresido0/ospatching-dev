@@ -26,7 +26,8 @@ try:
 
         command_id = response['Command']['CommandId']
         print(command_id)
-        print(e[0] - e[1] - e[2] - e[3] - e[4] - e[5] - e[6])
+        print(type((e)
+        #print(e[0] - e[1] - e[2] - e[3] - e[4] - e[5] - e[6])
 except IndexError:
     print('except block ran')
     
