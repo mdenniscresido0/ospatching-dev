@@ -14,19 +14,18 @@ command_id = response['Command']['CommandId']
 print(command_id)
 
 
+try:
+    f = open('sample_os_patching.csv')
+    csv_f = csv.reader(f)
 
-f = open('sample_os_patching.csv')
-csv_f = csv.reader(f)
-
-product = 'pim'
-server = 'db'
-#filtered = filter(lambda p: ('pim' == p[1] and 'db' == p[4]) , csv_f)
-result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
+    product = 'pim'
+    server = 'db'
+        #filtered = filter(lambda p: ('pim' == p[1] and 'db' == p[4]) , csv_f)
+    result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
 
 
-for e in result:
+    for e in result:
 
-    try: 
         ssm_client = boto3.client('ssm',region_name='us-east-1')
         response = ssm_client.send_command(
                     InstanceIds=['i-01571d416d841669e'],
@@ -37,6 +36,7 @@ for e in result:
         command_id = response['Command']['CommandId']
         print(command_id)
         print(e)
-    except IndexError:
-        print('except block ran')
-        continue
+except IndexError:
+    print('except block ran')
+    
+
