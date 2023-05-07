@@ -20,16 +20,18 @@ csv_f = csv.reader(f)
 
 product = 'pim'
 server = 'db'
-filtered = filter(lambda p: ('pim' == p[1] and 'db' == p[4]) , csv_f)
+#filtered = filter(lambda p: ('pim' == p[1] and 'db' == p[4]) , csv_f)
 result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
 
-l = list(result)
-print(l)
 
-l = [x for x in csv_f if (product == x[1] and server == x[4])]
+for e in result:
+    ssm_client = boto3.client('ssm',region_name='us-east-1')
+    response = ssm_client.send_command(
+                InstanceIds=['i-01571d416d841669e'],
+                Comment='test-command',
+                DocumentName="AWS-RunPowerShellScript",
+                Parameters={'commands': ['date']}, )
 
-print(l)
-#for e in result:
-    #print(e)
-#for i in range(len(result)):
-    #print(result[i])    
+    command_id = response['Command']['CommandId']
+    print(command_id)
+    print(e)
