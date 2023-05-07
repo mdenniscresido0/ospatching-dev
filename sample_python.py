@@ -22,7 +22,7 @@ try:
     c = 0
     for exception_item in exception_list:
         c = c + 1
-        print(exception_item ' - ' c)
+        print(exception_item + ' - ' + c)
         resultFinal = filter(lambda p: (exception_item != p[0]), result)
         result = resultFinal
         
