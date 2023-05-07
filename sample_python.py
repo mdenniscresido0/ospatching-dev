@@ -15,15 +15,13 @@ print(command_id)
 
 
 
-f = open('sample_os_patching.csv')
-csv_f = csv.reader(f)
 
 product = 'pim'
 server = 'db'
-#filtered = filter(lambda p: ('pim' == p[1] and 'db' == p[4]) , csv_f)
-result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
-
-
-for e in range(result):
-
-    print(result[e])
+with open('sample_os_patching.csv', 'rt') as f:
+    reader = csv.reader(f, delimiter=',')
+    for row in reader:
+        if row:
+            if product == row[0] and server == row[4]:
+                cfd_checked_before = "Yes"
+                print(row[0],row[1],row[2],row[3],row[4],row[5])
