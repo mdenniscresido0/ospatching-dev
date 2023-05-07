@@ -1,3 +1,4 @@
+Install-Module AWSPowerShell -Force
 Import-Module AWSPowerShell
 $date=get-date
 
