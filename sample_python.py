@@ -3,15 +3,6 @@ import boto3
 import csv
 
 print('Hello, world!')
-ssm_client = boto3.client('ssm',region_name='us-east-1')
-response = ssm_client.send_command(
-            InstanceIds=['i-01571d416d841669e'],
-            Comment='test-command',
-            DocumentName="AWS-RunPowerShellScript",
-            Parameters={'commands': ['date']}, )
-
-command_id = response['Command']['CommandId']
-print(command_id)
 
 
 try:
@@ -35,7 +26,7 @@ try:
 
         command_id = response['Command']['CommandId']
         print(command_id)
-        print(e)
+        print(e[0] - e[1] - e[2] - e[3] - e[4] - e[5] - e[6])
 except IndexError:
     print('except block ran')
     
