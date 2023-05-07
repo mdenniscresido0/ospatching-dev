@@ -19,15 +19,15 @@ try:
  
     
     result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
-    #resultF = filter(lambda p: (exception_list[0] != p[0]), result)
+    result = filter(lambda p: (exception_list[0] != p[0]), result)
     #result = resultF
-    #resultF = filter(lambda p: (exception_list[1] != p[0]), result)
+    result = filter(lambda p: (exception_list[1] != p[0]), result)
     #result = resultF
     
     for exception_item in exception_list:
         print(exception_item)
-        resultF = filter(lambda p: (exception_item != p[0]), result)
-        result = resultF    
+        #resultF = filter(lambda p: (exception_item != p[0]), result)
+        #result = resultF    
         #resultFinal = filter(lambda p: (exception_item != p[0]), result)
         #result = resultFinal
 
