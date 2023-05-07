@@ -25,6 +25,7 @@ try:
     #result = resultF
     
     for exception_item in exception_list:
+        print(exception_item)
         resultFinal = filter(lambda p: (exception_item != p[0]), result)
         result = resultFinal
 
