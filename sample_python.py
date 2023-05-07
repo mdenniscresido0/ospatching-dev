@@ -16,19 +16,20 @@ try:
        
     
     result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
-    listResult = result
+    
     for x in exception_list:
-        resultF = filter(lambda p: (x != p[0]), listResult)
-        listResult = resultF
+        resultF = filter(lambda p: (x != p[0]), result)
+        result = resultF
+        
         
     
     #result = filter(lambda p: (product == p[1] and server == p[4]), resultI)
 
 
-    for e in resultF:
+    for e in result:
 
-        print(type(e))
-        print(e[0], e[2])
+        #print(type(e))
+        print(e[0], e[1], e[2], e[3], e[4], e[5], e[6])
 
 except IndexError:
     print('except block ran')
