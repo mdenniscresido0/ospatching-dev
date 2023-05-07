@@ -19,10 +19,8 @@ try:
        
     
     result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
-    c = int(0)
+
     for exception_item in exception_list:
-        c = c + 1
-        print(exception_item + ' - ' + c)
         resultFinal = filter(lambda p: (exception_item != p[0]), result)
         result = resultFinal
         
