@@ -26,9 +26,9 @@ result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
 l = list(result)
 print(l)
 
-#l = [x for x in csv_f if (product == x[1] and server == x[4])]
+l = [x for x in csv_f if (product == x[1] and server == x[4])]
 
-#print(l)
+print(l)
 #for e in result:
     #print(e)
 #for i in range(len(result)):
