@@ -23,10 +23,11 @@ try:
     #result = resultF
     #result = filter(lambda p: (exception_list[1] != p[0]), result)
     #result = resultF
-    
+    resultFinal = []
     for exception_item in exception_list:
         print(exception_item)
-        result = filter(lambda p: (exception_item != p[0]), result)
+        resultFinal = filter(lambda p: (exception_item != p[0]), result)
+        result = resultFinal
 
 
         
@@ -34,7 +35,7 @@ try:
     #result = filter(lambda p: (product == p[1] and server == p[4]), resultI)
 
 
-    for e in result:
+    for e in resultFinal:
 
         #print(type(e))
         print(e[0], e[1], e[2], e[3], e[4], e[5], e[6])
