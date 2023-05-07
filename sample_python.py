@@ -24,14 +24,6 @@ server = 'db'
 result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
 
 
-for e in result:
-    ssm_client = boto3.client('ssm',region_name='us-east-1')
-    response = ssm_client.send_command(
-                InstanceIds=['i-01571d416d841669e'],
-                Comment='test-command',
-                DocumentName="AWS-RunPowerShellScript",
-                Parameters={'commands': ['date']}, )
+for e in range(result):
 
-    command_id = response['Command']['CommandId']
-    print(command_id)
-    print(e)
+    print(result[e])
