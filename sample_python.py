@@ -11,19 +11,21 @@ try:
 
     product = 'pim'
     server = 'db'
-    exception='pim5'
+    exception='pim5, pim6'
     exception_list = exception.split(",")
        
     
     result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
+    listResult = result
     for x in exception_list:
-        result = filter(lambda p: (x != p[0]), result)
+        resultF = filter(lambda p: (x != p[0]), listResult)
+        listResult = resultF
         
     
     #result = filter(lambda p: (product == p[1] and server == p[4]), resultI)
 
 
-    for e in result:
+    for e in listResult:
 
         print(type(e))
         print(e[0], e[2])
