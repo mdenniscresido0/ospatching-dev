@@ -25,7 +25,7 @@ try:
     #result = filter(lambda p: (product == p[1] and server == p[4]), resultI)
 
 
-    for e in listResult:
+    for e in resultF:
 
         print(type(e))
         print(e[0], e[2])
