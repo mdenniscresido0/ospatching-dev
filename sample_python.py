@@ -16,17 +16,18 @@ try:
        
     
     result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
-    
-    for x in exception_list:
-        resultF = filter(lambda p: (x != p[0]), result)
-        result = resultF
+    resultF = filter(lambda p: (exception_list[1] != p[0]), result)
+    resultF = filter(lambda p: (exception_list[1] != p[0]), resultF)
+    #for x in exception_list:
+        #resultF = filter(lambda p: (x != p[0]), result)
+        #result = resultF
         
         
     
     #result = filter(lambda p: (product == p[1] and server == p[4]), resultI)
 
 
-    for e in result:
+    for e in resultF:
 
         #print(type(e))
         print(e[0], e[1], e[2], e[3], e[4], e[5], e[6])
