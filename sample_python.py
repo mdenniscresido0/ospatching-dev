@@ -1,6 +1,7 @@
 # This program prints Hello, world!
 import boto3
 import csv
+import sys
 
 print('Hello, world!')
 
@@ -36,7 +37,7 @@ try:
             result = filter(lambda p: (exception_list[2] != p[0]), result)
             result = filter(lambda p: (exception_list[2] != p[0]), result)     
         else:
-            print("Invalid Input")
+            sys.exit("Invalid input")
                   
     for e in result:
 
