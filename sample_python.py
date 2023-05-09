@@ -63,23 +63,13 @@ def runSSMCommand(runProduct,runBatch,runRegion,runServerType,runKey,runValue):
     commandKey = ("tag:" + runKey)
 
     runCommand='date'
-   "Targets": [ 
-      { 
-         "Key": commandKey,
-         "Values": [ runValue ]
-      }
-   ],
+
     ssm_client = boto3.client('ssm',region_name=runRegion)
     response = ssm_client.send_command(
-                   "Targets": [ 
-                      { 
-                         "Key": commandKey,
-                         "Values": [ runValue ]
-                      }
-                    ],
-                    Comment=runComment,
-                    DocumentName=runDocument,
-                    Parameters={'commands': [runCommand]}, )
+                    "Targets": [{"Key": commandKey, "Values": [ runValue ]}],
+                    "Comment"=runComment,
+                    "DocumentName"=runDocument,
+                    "Parameters"={'commands': [runCommand]}, )
 
     command_id = response['Command']['CommandId']
     print(command_id)
