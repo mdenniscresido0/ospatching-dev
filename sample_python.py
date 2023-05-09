@@ -27,15 +27,15 @@ try:
     i = 0
     
     while i <= count:
-        print(exception_list[i])
-        print(result)
+
         result = filter(lambda p: (exception_list[i] != p[0]), result)
+        for e in result:
+
+            #print(type(e))
+            print(e[0], e[1], e[2], e[3], e[4], e[5], e[6])
         i = i + 1
         
-    for e in result:
 
-        #print(type(e))
-        print(e[0], e[1], e[2], e[3], e[4], e[5], e[6])
 
 except IndexError:
     print('except block ran')
