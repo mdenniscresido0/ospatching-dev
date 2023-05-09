@@ -17,14 +17,7 @@ try:
 
     result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
     #result = filter(lambda p: (exception_list[0] != p[0]), result)
-    #result = resultF
     #result = filter(lambda p: (exception_list[1] != p[0]), result)
-    #result = resultF
-
-    result = filter(lambda p: (exception_list[0] != p[0]), result)
-    result = filter(lambda p: (exception_list[1] != p[0]), result)
-    
-
 
     if exception == "":
         result = result
