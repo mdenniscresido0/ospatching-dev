@@ -9,17 +9,16 @@ print('Hello, world!')
 
 try:
     
-    exception = 'pim5,pim6,pim1'
+    exception = "pim5,pim6,pim1"
 
     df = pd.read_csv('sample_os_patching.csv')
 
     filter_val = df.query('batch == "pim" & server_lookup == "db"')
-    filtered = filter_val.query('product != "pim3"')
+    
     if exception == "":
         filter_val = filter_val
     else:
         exception_list = exception.split(",")
-        exception_count = len(exception_list)
         for e in exception_list:
             filtered = filter_val.query('product != e')
             filter_val = filtered
