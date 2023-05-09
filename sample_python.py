@@ -18,7 +18,7 @@ def mainFunction():
     mainServerType=caseServerType(inputServerType)
     mainProduct=caseProductName(inputProduct)
     print(mainRegion, mainServerType, mainProduct)
-    filterData(mainRegion, mainServerType, mainProduct, mainException)
+    filterData(mainRegion, mainServerType, mainProduct, inputException)
 
 
 
