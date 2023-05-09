@@ -72,7 +72,7 @@ def runSSMCommand(runProduct,runBatch,runRegion,runServerType,runKey,runValue):
                     Parameters={'commands': [runCommand]})
 
     command_id = response['Command']['CommandId']
-    print(command_id)
+    print("Command Id:" + command_id)
 
 def caseProductName(productName):
     if productName == 'Ajera':
