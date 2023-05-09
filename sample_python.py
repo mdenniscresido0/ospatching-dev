@@ -27,23 +27,28 @@ try:
     result = filter(lambda p: (exception_list[1] != p[0]), result)
     
 
-#item_filter = "pim6"
-    def filter_set(result, item_filter):
-        def iterator_func(x):
-            for v in x.values():
-                if item_filter != v:
-                    return True
-             return false
-        return  filter(iterator_func, result)
-    
-    filtered_records = filter_set(result, "pim6")    
-    #result = filter(lambda p: (exception_list[2] != p[0]), result)
 
-    for e in filtered_records:
+    if exception_list is None:
+        print("No issue")
+    else:
+        print(exception_list)
+        exception_count = len(exception_list)
+
+        if exception_count == 1:
+            result = filter(lambda p: (exception_list[0] != p[0]), result)
+        elif exception_count == 2:
+            result = filter(lambda p: (exception_list[0] != p[0]), result)
+            result = filter(lambda p: (exception_list[1] != p[0]), result)
+        elif exception_count == 3:
+            result = filter(lambda p: (exception_list[0] != p[0]), result)
+            result = filter(lambda p: (exception_list[2] != p[0]), result)
+            result = filter(lambda p: (exception_list[2] != p[0]), result)     
+        else:
+            print("Invalid Input")
+                  
+    for e in result:
 
         #print(type(e))
-        print(e[0], e[1], e[2], e[3], e[4], e[5], e[6])        
-
-
+        print(e[0], e[1], e[2], e[3], e[4], e[5], e[6])
 except IndexError:
     print('except block ran')
