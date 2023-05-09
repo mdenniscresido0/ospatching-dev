@@ -13,11 +13,8 @@ try:
     server = 'db'
     exception = ''
     #exception = 'pim5,pim6,pim1'
-    #exception_list = exception.split(",")
-    
-    print(exception_list[0])
-    print(exception_list[1])
-    
+
+
     result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
     #result = filter(lambda p: (exception_list[0] != p[0]), result)
     #result = resultF
@@ -29,9 +26,10 @@ try:
     
 
 
-    if exception_list is None:
-        print("No issue")
+    if exception == "":
+        result = result
     else:
+        exception_list = exception.split(",")
         print(exception_list)
         exception_count = len(exception_list)
 
