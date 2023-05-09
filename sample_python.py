@@ -6,7 +6,6 @@ import pandas as pd
 
 def mainFunction():
 
-
     inputException = os.environ['Pod Exception']
     inputRegion = os.environ['Region']
     inputServerType = os.environ['Server Type']
@@ -41,15 +40,40 @@ def filterData(runRegion, runServerType, runProduct, runException):
         runExceptionList = runException.split(",")
         for runProductFilter in runExceptionList:
             filterDataFinal = filterCSVTable.query('product != @runProductFilter')
-            filterCSVTable = filterDataFinal        
+            filterCSVTable = filterDataFinal
     
     for index, row in filterCSVTable.iterrows():
+        rowProduct = row['product']
+        rowBatch = row['batch']
+        rowRegion = row['reg']
+        rowServerType = row['server_lookup']
+        rowKey = row['key']
+        rowValue = row['value']
+        runSSMCommand(rowProduct,rowBatch,rowRegion,rowServerType,rowKey,rowValue)
+        
 
-        print(row['product'], row['batch'], row['reg'], row['server_lookup'], row['key'], row['value'])
 
+def runSSMCommand(runProduct,runBatch,runRegion,runServerType,runKey,runValue):
+    from datetime import date
+    runDocument=caseDocument(runServerType)
+    
+    runToday = date.today()
+    runToday = runToday.strftime("%d%m%Y")
+    runComment = (runBatch+ "-" +runProduct+ "-" +runToday)
+    commandKey = ("tag:" + runKey)
 
-#def runSSMCommand():
-    #print
+    runCommand='date'
+
+    ssm_client = boto3.client('ssm',region_name=runRegion)
+    response = ssm_client.send_command(
+                    Key=commandKey,
+                    Values=runValue,
+                    Comment=runComment,
+                    DocumentName=runDocument,
+                    Parameters={'commands': [runCommand]}, )
+
+    command_id = response['Command']['CommandId']
+    print(command_id)
 
 def caseProductName(productName):
     if productName == 'Ajera':
