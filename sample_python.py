@@ -26,17 +26,20 @@ try:
     result = filter(lambda p: (exception_list[0] != p[0]), result)
     result = filter(lambda p: (exception_list[1] != p[0]), result)
     
-    def test_function(item,filter_list):
-        resultFinal = filter(lambda p: (item != p[0]), filter_list)
-        return resultFinal
+
+#item_filter = "pim6"
+    def filter_set(result, item_filter)
+        def iterator_func(x)
+            for v in x.values():
+                if item_filter != v
+                    return True
+             return false
+        return  filter(iterator_func, result)
     
-    for i in exception_list:
-        filtered_item = result
-        filtered_item = test_function(i,filtered_item)
-        
+    filtered_records = filter_set(result, "pim6")    
     #result = filter(lambda p: (exception_list[2] != p[0]), result)
 
-    for e in filtered_item:
+    for e in filtered_records:
 
         #print(type(e))
         print(e[0], e[1], e[2], e[3], e[4], e[5], e[6])        
@@ -44,5 +47,3 @@ try:
 
 except IndexError:
     print('except block ran')
-    
-
