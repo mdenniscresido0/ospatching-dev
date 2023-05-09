@@ -29,7 +29,7 @@ def filterData(runRegion, runServerType, runProduct, runException):
     filter_df = pd.read_csv('sample_os_patching.csv')
 
     filterProduct = filter_df.query('batch == @runProduct')
-    print(filterProduct)
+    #print(filterProduct)
     if runServerType == "all" and runRegion == "all":
         filterCSVTable = filterProduct
     elif runServerType == "all" and runRegion != "all":
@@ -38,7 +38,7 @@ def filterData(runRegion, runServerType, runProduct, runException):
         filterCSVTable = filterProduct.query('server_lookup == @runServerType')
     else:
         filterCSVTable = filterProduct.query('reg_lookup == @runRegion & server_lookup == @runServerType')
-    print(filterCSVTable)
+    #print(filterCSVTable)
     if runException == "":
         filterCSVTable = filterCSVTable
     else:
@@ -49,7 +49,7 @@ def filterData(runRegion, runServerType, runProduct, runException):
     
     for index, row in filterCSVTable.iterrows():
 
-        return (row['product'], row['batch'], row['reg'], row['server_lookup'], row['key'], row['value'])
+        print(row['product'], row['batch'], row['reg'], row['server_lookup'], row['key'], row['value'])
 
 
 #def runSSMCommand():
