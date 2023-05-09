@@ -61,7 +61,6 @@ def runSSMCommand(runProduct,runBatch,runRegion,runServerType,runKey,runValue):
     runToday = runToday.strftime("%d%m%Y")
     runComment = (runBatch+ "-" +runProduct+ "-" +runToday)
     commandKey = ("tag:" + runKey)
-    print(commandKey)
     runCommand='date'
 
     ssm_client = boto3.client('ssm',region_name=runRegion)
