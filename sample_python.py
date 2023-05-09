@@ -13,12 +13,15 @@ def mainFunction():
     inputServerType = os.environ['Server Type']
     inputProduct = os.environ['Product Name']
 
-
+    if inputException == "":
+        mainException == ""
+    else inputException
+        mainException == inputException
     mainRegion=caseRegion(inputRegion)
     mainServerType=caseServerType(inputServerType)
     mainProduct=caseProductName(inputProduct)
     print(mainRegion, mainServerType, mainProduct)
-    filterData(mainRegion, mainServerType, mainProduct, inputException)
+    filterData(mainRegion, mainServerType, mainProduct, mainException)
 
 
 
