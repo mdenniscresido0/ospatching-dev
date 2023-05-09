@@ -12,9 +12,9 @@ def mainFunction():
     inputProduct = os.environ['Product Name']
 
     if inputException == "":
-        mainException == ""
+        mainException = ""
     else:
-        mainException == inputException
+        mainException = inputException
         
 
     mainRegion=caseRegion(inputRegion)
