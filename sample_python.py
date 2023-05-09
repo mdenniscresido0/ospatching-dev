@@ -31,7 +31,7 @@ try:
     i = 0
     result = filter(lambda p: (exception_list[0] != p[0]), result)
     result = filter(lambda p: (exception_list[1] != p[0]), result)
-    result = filter(lambda p: (exception_list[2] != p[0]), result)
+    #result = filter(lambda p: (exception_list[2] != p[0]), result)
 
     for e in result:
 
