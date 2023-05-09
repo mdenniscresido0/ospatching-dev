@@ -11,7 +11,7 @@ reg = os.environ['Region']
 server = os.environ['Server Type']
 product = os.environ['Product Name']
 
-print(product server env reg)
+print(product, server, env, reg)
 
 try:
     
