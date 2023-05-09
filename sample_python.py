@@ -12,7 +12,7 @@ try:
     df = pd.read_csv('sample_os_patching.csv')
 
     filter = df.query('batch=="pim" & server_lookup=="db"')
-    for index, row in df.iterrows():
+    for index, row in filter.iterrows():
         print(row['batch'], row['reg'], row['server_lookup'])
     
 
