@@ -27,9 +27,9 @@ def mainFunction():
 def filterData(runRegion, runServerType, runProduct, runException):
 
     filter_df = pd.read_csv('sample_os_patching.csv')
-    print(filter_df)
-    filterProduct = filter_df.query('batch == @runProduct')
 
+    filterProduct = filter_df.query('batch == @runProduct')
+    print(filterProduct)
     if runServerType == "all" and runRegion == "all":
         filterCSVTable = filterProduct
     elif runServerType == "all" and runRegion != "all":
@@ -38,7 +38,7 @@ def filterData(runRegion, runServerType, runProduct, runException):
         filterCSVTable = filterProduct.query('server_lookup == @runServerType')
     else:
         filterCSVTable = filterProduct.query('reg_lookup == @runRegion & server_lookup == @runServerType')
-
+    print(filterCSVTable)
     if runException == "":
         filterCSVTable = filterCSVTable
     else:
