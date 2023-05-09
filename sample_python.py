@@ -3,9 +3,15 @@ import boto3
 import csv
 import sys
 import pandas as pd
+import os
 
 print('Hello, world!')
+env = os.environ['AWS Environment']
+reg = os.environ['Region']
+server = os.environ['Server Type']
+product = os.environ['Product Name']
 
+print(product server env reg)
 
 try:
     
