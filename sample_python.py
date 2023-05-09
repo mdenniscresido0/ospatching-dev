@@ -48,7 +48,7 @@ def filterData(runRegion, runServerType, runProduct, runException):
     
     for index, row in filterCSVTable.iterrows():
 
-        print(row['product'], row['batch'], row['reg'], row['server_lookup'], row['key'], row['value'])
+        return (row['product'], row['batch'], row['reg'], row['server_lookup'], row['key'], row['value'])
 
 
 #def runSSMCommand():
