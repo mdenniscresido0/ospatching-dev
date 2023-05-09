@@ -5,6 +5,7 @@ def mainFunction():
     import pandas as pd
     import os
 
+    assert sys.version_info >= (3, 10)
     
     inputException = os.environ['Product Exception']
     inputRegion = os.environ['Region']
