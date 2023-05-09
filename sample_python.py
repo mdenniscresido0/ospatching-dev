@@ -11,7 +11,7 @@ try:
 
     product = 'pim'
     server = 'db'
-    exception='pim5,pim6'
+    exception='pim5,pim6,pim1'
     exception_list = exception.split(",")
     
     print(exception_list[0])
