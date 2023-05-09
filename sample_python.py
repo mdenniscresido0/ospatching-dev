@@ -12,8 +12,8 @@ try:
 
     product = 'pim'
     server = 'db'
-    exception = ''
-    #exception = 'pim5,pim6,pim1'
+    #exception = ''
+    exception = 'pim5,pim6,pim1,pim3'
 
 
     result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
