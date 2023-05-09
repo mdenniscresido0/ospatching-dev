@@ -6,6 +6,7 @@ def mainFunction():
     import os
 
     assert sys.version_info >= (3, 10)
+
     
     inputException = os.environ['Product Exception']
     inputRegion = os.environ['Region']
@@ -54,32 +55,55 @@ def filterData(runRegion, runServerType, runProduct, runException):
     #print
 
 def caseProductName(productName):
-    match productName:
-        case "Ajera":
-            return "ajera"
-        case "Citrix":
-            return "citrix"
-        case "DFME_Maconomy-ESSENTIALS":
-            return "dfme"
-        case "DFVE_Vision-Vantagepoint-ESSENTIALS":
-            return "dfve"
-        case "MacEnt-Pod-5_and_14":
-            return "mn5-14"
-        case "Pod-MN11":
-            return "mn11"
-        case "Pod-MN3":
-            return "mn3"
-        case "Maconomy-ENTERPRISE":
-            return "macent"
-        case "Vision-Vantagepoint-ENTERPRISE":
-            return "vtent"
-        case "PIM":
-            return "pim"
-        case "Deltek-Dev":
-            return "dev"
+    if productName == 'Ajera':
+        return "ajera"
+    elif productName == 'Citrix':
+        return "citrix"
+    elif productName == 'DFME_Maconomy-ESSENTIALS':
+        return "dfme"
+    elif productName == 'DFVE_Vision-Vantagepoint-ESSENTIALS':
+        return "dfve"
+    elif productName == 'MacEnt-Pod-5_and_14':
+        return "mn5-14"
+    elif productName == 'MacEnt-Pod-3_and_11':
+        return "mn3-11"
+    elif productName == 'Maconomy-ENTERPRISE':
+        return "macent"
+    elif productName == 'Vision-Vantagepoint-ENTERPRISE':
+        return "vtent"
+    elif productName == 'PIM':
+        return "pim"
+    elif productName == 'Deltek-Dev':
+        return "dev"
 
 def caseServerType(serverType):
-    match serverType:
-        case "DB":
-            return "db"
-        case "NonDB":
+    if serverType == 'DB':
+        return "db"
+    elif serverType == 'NonDB':
+        return "nondb"
+    elif serverType == 'ALL':
+        return "all"
+
+        
+def caseRegion(region):
+    if region == 'US':
+        return "us"
+    elif region == 'EU':
+        return "eu"
+    elif region == 'CA':
+        return "ca"
+    elif region == 'AP':
+        return "ap"
+    elif region == 'ALL':
+        return "all"        
+ 
+
+def caseDocument(documentType):
+    if documentType == 'db':
+        return "AWS-RunPowerShellScript"
+    elif documentType == 'nondb':
+        return "AWS-RunPowerShellScript"
+
+
+
+mainFunction()
