@@ -11,8 +11,8 @@ def mainFunction():
     inputServerType = os.environ['Server Type']
     inputProduct = os.environ['Product Name']
 
-    if inputException == "":
-        mainException = ""
+    if inputException == "NA":
+        mainException = "NA"
     else:
         mainException = inputException
         
@@ -39,7 +39,7 @@ def filterData(runRegion, runServerType, runProduct, runException):
     else:
         filterCSVTable = filterProduct.query('reg_lookup == @runRegion and server_lookup == @runServerType')
     #print(filterCSVTable)
-    if runException == "":
+    if runException == "NA":
         filterCSVTable = filterCSVTable
     else:
         runExceptionList = runException.split(",")
