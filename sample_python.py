@@ -19,7 +19,9 @@ try:
         filter_val = filter_val
     else:
         exception_list = exception.split(",")
-
+        for e in exception_list:
+            filtered = filter_val.query('product != @e')
+            filter_val = filtered        
     
     for index, row in filter_val.iterrows():
         print(row['product'], row['batch'], row['reg'], row['server_lookup'], row['key'], row['value'])
