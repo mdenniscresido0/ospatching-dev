@@ -49,6 +49,7 @@ def filterData(runRegion, runServerType, runProduct, runException):
         rowServerType = row['server_lookup']
         rowKey = row['key']
         rowValue = row['value']
+        print(rowProduct,rowBatch,rowRegion,rowServerType,rowKey,rowValue)
         runSSMCommand(rowProduct,rowBatch,rowRegion,rowServerType,rowKey,rowValue)
         
 
