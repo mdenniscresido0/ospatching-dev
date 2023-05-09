@@ -9,12 +9,10 @@ print('Hello, world!')
 
 try:
 
-    dataFrame = pd.read_csv('sample_os_patching.csv')
-    print("DataFrame...\n",dataFrame)
+    df = pd.read_csv('sample_os_patching.csv')
 
-    # select rows containing text "Lamborghini"
-    dataFrame = dataFrame[dataFrame['batch'].str.contains('pim')]
-    print("\nFetching rows with text Lamborghini ...\n",dataFrame)
+    filter = df.query('batch=="pim" & server_lookup=="db"')
+    print(filter)
 
 except IndexError:
     print('except block ran')
