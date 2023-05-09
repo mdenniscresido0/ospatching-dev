@@ -34,10 +34,10 @@ def filterData(runRegion, runServerType, runProduct, runException):
         filterCSVTable = filterProduct
     elif runServerType == "all" and runRegion != "all":
         filterCSVTable = filterProduct.query('reg_lookup == @runRegion')
-    elif runServerType != "all" and runRegion != "all":
+    elif runServerType != "all" and runRegion == "all":
         filterCSVTable = filterProduct.query('server_lookup == @runServerType')
     else:
-        filterCSVTable = filterProduct.query('reg_lookup == @runRegion & server_lookup == @runServerType')
+        filterCSVTable = filterProduct.query('reg_lookup == @runRegion and server_lookup == @runServerType')
     #print(filterCSVTable)
     if runException == "":
         filterCSVTable = filterCSVTable
