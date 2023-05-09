@@ -13,7 +13,7 @@ try:
 
     filter = df.query('batch=="pim" & server_lookup=="db"')
     for index, row in df.iterrows():
-        print(row['pim'], row['reg'], row['server_lookup'])
+        print(row['batch'], row['reg'], row['server_lookup'])
     
 
 except IndexError:
