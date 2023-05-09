@@ -23,18 +23,13 @@ try:
     #result = resultF
     #result = filter(lambda p: (exception_list[1] != p[0]), result)
     #result = resultF
-    resultFinal = []
-    for exception_item in exception_list:
-        print(exception_item)
-        resultFinal = filter(lambda p: (exception_item != p[0]), result)
-        result = resultFinal
-
-
-        
+    count = len(exception_list)
+    i = 0
     
-    #result = filter(lambda p: (product == p[1] and server == p[4]), resultI)
-
-
+    while i <= count:
+        result = filter(lambda p: (exception_list[i] != p[0]), result)
+        i = i + 1
+        
     for e in result:
 
         #print(type(e))
