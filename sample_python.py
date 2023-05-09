@@ -27,6 +27,8 @@ try:
     i = 0
     
     while i <= count:
+        print(exception_list[i])
+        print(result)
         result = filter(lambda p: (exception_list[i] != p[0]), result)
         i = i + 1
         
