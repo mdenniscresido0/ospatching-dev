@@ -29,12 +29,12 @@ try:
     #result = resultF
     count = len(exception_list)
     i = 0
-    result = filter(lambda p: (exception_list[0] != p[0]), result)
-    result = filter(lambda p: (exception_list[1] != p[0]), result)
-    result = filter(lambda p: (exception_list[2] != p[0]), result)
-    #while i < count:
-        #result = filter(lambda p: (exception_list[i] != p[0]), result)
-        #i = i + 1
+    #result = filter(lambda p: (exception_list[0] != p[0]), result)
+    #result = filter(lambda p: (exception_list[1] != p[0]), result)
+    #result = filter(lambda p: (exception_list[2] != p[0]), result)
+    while i < count:
+        result = filter(lambda p: (exception_list[i] != p[0]), result)
+        i = i + 1
     for e in result:
 
         #print(type(e))
