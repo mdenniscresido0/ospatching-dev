@@ -11,9 +11,10 @@ try:
 
     df = pd.read_csv('sample_os_patching.csv')
 
-    filter = df.query('batch=="pim" & server_lookup=="db"')
-    for index, row in filter.iterrows():
-        print(row['batch'], row['reg'], row['server_lookup'])
+    filter = df.query('batch == "pim" & server_lookup == "db"')
+    filtered = filter.query('product != "pim3"')
+    for index, row in filtered.iterrows():
+        print(row['product'], row['batch'], row['reg'], row['server_lookup'], row['key'], row['value'])
     
 
 except IndexError:
