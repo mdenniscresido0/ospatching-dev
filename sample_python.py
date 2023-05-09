@@ -16,24 +16,27 @@ try:
     
     print(exception_list[0])
     print(exception_list[1])
- 
-    
-    print(exception_list[0])
-    print(exception_list[1])
- 
     
     result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
     #result = filter(lambda p: (exception_list[0] != p[0]), result)
     #result = resultF
     #result = filter(lambda p: (exception_list[1] != p[0]), result)
     #result = resultF
-    count = len(exception_list)
-    i = 0
+
     result = filter(lambda p: (exception_list[0] != p[0]), result)
     result = filter(lambda p: (exception_list[1] != p[0]), result)
+    
+    def test_function(item,filter_list):
+        resultFinal = filter(lambda p: (item != p[0]), filter_list)
+        return resultFinal
+    
+    for i in exception_list:
+        filtered_item = result
+        filtered_item = test_function(i,filtered_item)
+        
     #result = filter(lambda p: (exception_list[2] != p[0]), result)
 
-    for e in result:
+    for e in filtered_item:
 
         #print(type(e))
         print(e[0], e[1], e[2], e[3], e[4], e[5], e[6])        
