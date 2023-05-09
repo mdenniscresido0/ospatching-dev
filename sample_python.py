@@ -6,7 +6,7 @@ def mainFunction():
     import os
 
     
-    inputException = os.environ['Product Exception']
+    #inputException = os.environ['Product Exception']
     inputRegion = os.environ['Region']
     inputServerType = os.environ['Server Type']
     inputProduct = os.environ['Product Name']
@@ -15,7 +15,7 @@ def mainFunction():
     mainRegion=caseRegion(inputRegion)
     mainServerType=caseServerType(inputServerType)
     mainProduct=caseProductName(inputProduct)
-    mainException=inputException
+    mainException=""
 
     mainCommand=filterData(mainRegion, mainServerType, mainProduct, mainException)
     print(mainCommand)
