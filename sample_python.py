@@ -12,7 +12,9 @@ try:
     df = pd.read_csv('sample_os_patching.csv')
 
     filter = df.query('batch=="pim" & server_lookup=="db"')
-    print(filter)
+    for index, row in df.iterrows():
+        print(row['pim'], row['reg'], row['server_lookup'])
+    
 
 except IndexError:
     print('except block ran')
