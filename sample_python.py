@@ -28,9 +28,9 @@ try:
     
 
 #item_filter = "pim6"
-    def filter_set(result, item_filter)
-        def iterator_func(x)
-            for v in x.values():
+    def filter_set(result, item_filter):
+        def iterator_func(x):
+            for v in x.values()
                 if item_filter != v
                     return True
              return false
