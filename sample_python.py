@@ -13,7 +13,7 @@ def mainFunction():
 
     if inputException == "":
         mainException == ""
-    else inputException:
+    else:
         mainException == inputException
         
 
