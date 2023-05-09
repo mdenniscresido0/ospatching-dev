@@ -16,6 +16,8 @@ try:
     
     print(exception_list[0])
     print(exception_list[1])
+    
+    #count = len(exception_list)
  
     
     result = filter(lambda p: (product == p[1] and server == p[4]), csv_f)
@@ -35,7 +37,7 @@ try:
     #result = filter(lambda p: (product == p[1] and server == p[4]), resultI)
 
 
-    for e in resultFinal:
+    for e in result:
 
         #print(type(e))
         print(e[0], e[1], e[2], e[3], e[4], e[5], e[6])
