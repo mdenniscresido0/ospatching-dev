@@ -31,7 +31,7 @@ try:
     def filter_set(result, item_filter):
         def iterator_func(x):
             for v in x.values():
-                if item_filter != v
+                if item_filter != v:
                     return True
              return false
         return  filter(iterator_func, result)
