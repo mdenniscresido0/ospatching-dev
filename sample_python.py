@@ -18,7 +18,7 @@ def mainFunction():
     mainServerType=caseServerType(inputServerType)
     mainProduct=caseProductName(inputProduct)
     mainException=""
-
+    print(mainRegion, mainServerType, mainProduct)
     mainCommand=filterData(mainRegion, mainServerType, mainProduct, mainException)
     print(mainCommand)
     print('Hello, world!')
@@ -27,6 +27,7 @@ def mainFunction():
 def filterData(runRegion, runServerType, runProduct, runException):
 
     filter_df = pd.read_csv('sample_os_patching.csv')
+    print(filter_df)
     filterProduct = filter_df.query('batch == @runProduct')
 
     if runServerType == "all" and runRegion == "all":
