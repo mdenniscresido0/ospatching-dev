@@ -6,8 +6,6 @@ import pandas as pd
 
 def mainFunction():
 
-
-    
     inputException = os.environ['Product Exception']
     inputRegion = os.environ['Region']
     inputServerType = os.environ['Server Type']
@@ -15,12 +13,13 @@ def mainFunction():
 
     if inputException == "":
         mainException == ""
-    else inputException
+    else inputException:
         mainException == inputException
+        
+
     mainRegion=caseRegion(inputRegion)
     mainServerType=caseServerType(inputServerType)
     mainProduct=caseProductName(inputProduct)
-    print(mainRegion, mainServerType, mainProduct)
     filterData(mainRegion, mainServerType, mainProduct, mainException)
 
 
