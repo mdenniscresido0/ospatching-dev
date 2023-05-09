@@ -8,12 +8,23 @@ print('Hello, world!')
 
 
 try:
+    
+    exception = 'pim5,pim6,pim1'
 
     df = pd.read_csv('sample_os_patching.csv')
 
-    filter = df.query('batch == "pim" & server_lookup == "db"')
-    filtered = filter.query('product != "pim3"')
-    for index, row in filtered.iterrows():
+    filter_val = df.query('batch == "pim" & server_lookup == "db"')
+    filtered = filter_val.query('product != "pim3"')
+    if exception == "":
+        filter_val = filter_val
+    else:
+        exception_list = exception.split(",")
+        exception_count = len(exception_list)
+        for e in exception_list:
+            filtered = filter_val.query('product != e')
+            filter_val = filtered
+    
+    for index, row in filter_val.iterrows():
         print(row['product'], row['batch'], row['reg'], row['server_lookup'], row['key'], row['value'])
     
 
