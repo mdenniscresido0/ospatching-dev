@@ -409,10 +409,10 @@ vf4,vtent,us-east-1,us,nondb,maintwindow-visionent-vf4,rebootgroup2-nondb
 vf4,vtent,us-west-2,us,db,maintwindow-visionent-vf4,rebootgroup1-dbonly
 vf4,vtent,us-west-2,us,nondb,maintwindow-visionent-vf4,rebootgroup2-nondb
 vf5,vtent,ca-central-1,ca,nondb,maintwindow-visionent-vf5,rebootgroup2-nondb
-vf6,vtent,eu-west-1,eu,db,maintwindow-visionent-vf6-mmd,rebootgroup1-dbonly
-vf6,vtent,eu-west-1,eu,nondb,maintwindow-visionent-vf6-mmd,rebootgroup2-nondb
-vf6,vtent,eu-central-1,eu,db,maintwindow-visionent-vf6-mmd,rebootgroup1-dbonly
-vf6,vtent,eu-central-1,eu,nondb,maintwindow-visionent-vf6-mmd,rebootgroup2-nondb
+vf6,vf6,eu-west-1,eu,db,maintwindow-visionent-vf6-mmd,rebootgroup1-dbonly
+vf6,vf6,eu-west-1,eu,nondb,maintwindow-visionent-vf6-mmd,rebootgroup2-nondb
+vf6,vf6,eu-central-1,eu,db,maintwindow-visionent-vf6-mmd,rebootgroup1-dbonly
+vf6,vf6,eu-central-1,eu,nondb,maintwindow-visionent-vf6-mmd,rebootgroup2-nondb
 vf7,vtent,eu-west-1,eu,db,maintwindow-visionent-vf7,rebootgroup1-dbonly
 vf7,vtent,eu-central-1,eu,db,maintwindow-visionent-vf7,rebootgroup1-dbonly
 vf8,vtent,us-east-1,us,db,maintwindow-visionent-vf8,rebootgroup1-dbonly
