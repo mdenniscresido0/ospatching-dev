@@ -95,6 +95,8 @@ def caseProductName(productName):
         return "pim"
     elif productName == 'Deltek-Dev':
         return "dev"
+    elif productName == 'VF6':
+        return "vf6"
 
 def caseServerType(serverType):
     if serverType == 'DB':
