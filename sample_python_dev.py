@@ -69,7 +69,7 @@ def runSSMCommand(runProduct,runBatch,runRegion,runServerType,runKey,runValue):
                     Targets=[{"Key": commandKey, "Values": [ runValue ]}],
                     Comment=runComment,
                     DocumentName=runDocument,
-                    DeliveryTimedOutCount=900,
+                    TimeoutSeconds=900,
                     MaxConcurrency='100%',
                     MaxErrors='100%')
                     
