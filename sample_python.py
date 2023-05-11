@@ -69,7 +69,9 @@ def runSSMCommand(runProduct,runBatch,runRegion,runServerType,runKey,runValue):
                     Targets=[{"Key": commandKey, "Values": [ runValue ]}],
                     Comment=runComment,
                     DocumentName=runDocument,
-                    Parameters={'commands': [runCommand]})
+                    MaxConcurrency='100%',
+                    MaxErrors='100%',
+                    TimeoutSeconds=900)
 
     command_id = response['Command']['CommandId']
     print("Command Id:" + command_id)
@@ -124,10 +126,8 @@ def caseRegion(region):
 
 def caseDocument(documentType):
     if documentType == 'db':
-        return "AWS-RunPowerShellScript"
+        return "Global-DB-SSM-Document"
     elif documentType == 'nondb':
-        return "AWS-RunPowerShellScript"
-
-
+        return "Global-Non-DB-SSM-Document"
 
 mainFunction()
