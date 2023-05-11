@@ -71,8 +71,7 @@ def runSSMCommand(runProduct,runBatch,runRegion,runServerType,runKey,runValue):
                     DocumentName=runDocument,
                     DeliveryTimedOutCount=900,
                     MaxConcurrency='100%',
-                    MaxErrors='100%',
-                    TimeoutSeconds=3600
+                    MaxErrors='100%')
                     
 
     command_id = response['Command']['CommandId']
