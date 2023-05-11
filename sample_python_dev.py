@@ -128,10 +128,10 @@ def caseRegion(region):
 def caseDocument(documentType):
     if documentType == 'db':
         #return "Global-DB-SSM-Document"
-        return "AWS-RunPowerShellScript"
+        return "DeltekDev-SSM-OSPatching"
     elif documentType == 'nondb':
         #return "Global-Non-DB-SSM-Document"
-        return "AWS-RunPowerShellScript"
+        return "DeltekDev-SSM-OSPatching"
 
 
 
