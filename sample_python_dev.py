@@ -72,7 +72,7 @@ def runSSMCommand(runProduct,runBatch,runRegion,runServerType,runKey,runValue):
                     MaxConcurrency='100%',
                     MaxErrors='100%',
                     TimeoutSeconds=900,
-                    Parameters={'executionTimeout': [3600]})
+                    Parameters={'executionTimeout': ["3600"]})
                     
 
     command_id = response['Command']['CommandId']
