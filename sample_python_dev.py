@@ -127,12 +127,8 @@ def caseRegion(region):
 
 def caseDocument(documentType):
     if documentType == 'db':
-        #return "Global-DB-SSM-Document"
-        return "DeltekDev-SSM-OSPatching"
+        return "Global-DB-SSM-Document"
     elif documentType == 'nondb':
-        #return "Global-Non-DB-SSM-Document"
-        return "DeltekDev-SSM-OSPatching"
-
-
+        return "Global-Non-DB-SSM-Document"
 
 mainFunction()
