@@ -6,7 +6,6 @@ import pandas as pd
 
 def mainFunction():
 
-    inputException = os.environ['Pod Exception']
     inputRegion = os.environ['Region']
     inputServerType = os.environ['Server Type']
     inputProduct = os.environ['Product Name']
