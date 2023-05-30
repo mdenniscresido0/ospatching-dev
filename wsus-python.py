@@ -14,11 +14,11 @@ def mainFunction():
     mainRegion=caseRegion(inputRegion)
     mainServerType=caseServerType(inputServerType)
     mainProduct=caseProductName(inputProduct)
-    filterData(mainRegion, mainServerType, mainProduct, inputException)
+    filterData(mainRegion, mainServerType, mainProduct)
 
 
 
-def filterData(runRegion, runServerType, runProduct, runException):
+def filterData(runRegion, runServerType, runProduct):
 
     filter_df = pd.read_csv('sample_os_patching.csv')
 
@@ -32,14 +32,6 @@ def filterData(runRegion, runServerType, runProduct, runException):
         filterCSVTable = filterProduct.query('server_lookup == @runServerType')
     else:
         filterCSVTable = filterProduct.query('reg_lookup == @runRegion and server_lookup == @runServerType')
-    #print(filterCSVTable)
-    if runException == "NA":
-        filterCSVTable = filterCSVTable
-    else:
-        runExceptionList = runException.split(",")
-        for runProductFilter in runExceptionList:
-            filterDataFinal = filterCSVTable.query('product != @runProductFilter')
-            filterCSVTable = filterDataFinal
     
     for index, row in filterCSVTable.iterrows():
         rowProduct = row['product']
