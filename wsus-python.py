@@ -117,8 +117,8 @@ def caseRegion(region):
 
 def caseDocument(documentType):
     if documentType == 'db':
-        return "dco-ssm-wsus-update"
+        return "ssm-wsus-update"
     elif documentType == 'nondb':
-        return "dco-ssm-wsus-update"
+        return "ssm-wsus-update"
 
 mainFunction()
