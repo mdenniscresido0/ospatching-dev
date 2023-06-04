@@ -75,6 +75,17 @@ citrix,citrix,eu-west-1,eu,db,MaintWindow-Citrix,rebootgroup1-dbonly
 citrix,citrix,eu-west-1,eu,nondb,MaintWindow-Citrix,rebootgroup2-nondb
 citrix,citrix,eu-central-1,eu,db,MaintWindow-Citrix,rebootgroup1-dbonly
 citrix,citrix,eu-central-1,eu,nondb,MaintWindow-Citrix,rebootgroup2-nondb
+citrix,citrix,eu-west-1,eu,ctlr,MaintWindow-Citrix,rebootgroup3-ctlr
+citrix,citrix,eu-central-1,eu,ctlr,MaintWindow-Citrix,rebootgroup3-ctlr
+citrix,citrix,ap-southeast-1,ap,db,MaintWindow-Citrix,rebootgroup1-dbonly
+citrix,citrix,ap-southeast-1,ap,nondb,MaintWindow-Citrix,rebootgroup2-nondb
+citrix,citrix,ap-southeast-1,ap,ctlr,MaintWindow-Citrix,rebootgroup3-ctlr
+citrix,citrix,us-east-1,us,db,MaintWindow-Citrix,rebootgroup1-dbonly
+citrix,citrix,us-east-1,us,nondb,MaintWindow-Citrix,rebootgroup2-nondb
+citrix,citrix,us-east-1,us,ctlr,MaintWindow-Citrix,rebootgroup3-ctlr
+citrix,citrix,us-west-2,us,db,MaintWindow-Citrix,rebootgroup1-dbonly
+citrix,citrix,us-west-2,us,nondb,MaintWindow-Citrix,rebootgroup2-nondb
+citrix,citrix,us-west-2,us,ctlr,MaintWindow-Citrix,rebootgroup3-ctlr
 mn3,mn3,eu-west-1,eu,db,maintwindow-macent-mn3,rebootgroup1-dbonly
 mn3,mn3,eu-west-1,eu,nondb,maintwindow-macent-mn3,rebootgroup2-nondb
 mn3,mn3,eu-central-1,eu,db,maintwindow-macent-mn3,rebootgroup1-dbonly
@@ -474,4 +485,3 @@ vp14,vtent,us-east-1,us,db,maintwindow-vantageent-vp14,rebootgroup1-dbonly
 vp14,vtent,us-east-1,us,nondb,maintwindow-vantageent-vp14,rebootgroup2-nondb
 vp14,vtent,us-west-2,us,db,maintwindow-vantageent-vp14,rebootgroup1-dbonly
 vp14,vtent,us-west-2,us,nondb,maintwindow-vantageent-vp14,rebootgroup2-nondb
-
