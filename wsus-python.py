@@ -98,6 +98,8 @@ def caseServerType(serverType):
         return "db"
     elif serverType == 'NonDB':
         return "nondb"
+    elif serverType == 'CTLR':
+        return "ctlr"    
     elif serverType == 'ALL':
         return "all"
 
@@ -120,5 +122,7 @@ def caseDocument(documentType):
         return "ssm-wsus-update"
     elif documentType == 'nondb':
         return "ssm-wsus-update"
+    elif documentType == 'ctlr':
+        return "ssm-wsus-update"    
 
 mainFunction()
