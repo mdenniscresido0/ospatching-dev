@@ -107,9 +107,10 @@ def caseServerType(serverType):
         return "db"
     elif serverType == 'NonDB':
         return "nondb"
+    elif serverType == 'CTLR':
+        return "ctlr"
     elif serverType == 'ALL':
         return "all"
-
         
 def caseRegion(region):
     if region == 'US':
