@@ -132,5 +132,7 @@ def caseDocument(documentType):
         return "Global-DB-SSM-Document"
     elif documentType == 'nondb':
         return "Global-Non-DB-SSM-Document"
+    elif documentType == 'ctlr':
+        return "Global-Non-DB-SSM-Document"
 
 mainFunction()
