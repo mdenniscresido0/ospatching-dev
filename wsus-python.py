@@ -78,8 +78,8 @@ def caseProductName(productName):
         return "dfve"
     elif productName == 'MacEnt-Pod-5':
         return "mn5"
-     elif productName == 'MacEnt-Pod-14':
-        return "mn14"   
+    elif productName == 'MacEnt-Pod-14':
+        return "mn14"
     elif productName == 'MacEnt-Pod-3':
         return "mn3"
     elif productName == 'MacEnt-Pod-11':
