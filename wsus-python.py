@@ -76,8 +76,10 @@ def caseProductName(productName):
         return "dfme"
     elif productName == 'DFVE_Vision-Vantagepoint-ESSENTIALS':
         return "dfve"
-    elif productName == 'MacEnt-Pod-5_and_14':
-        return "mn5-14"
+    elif productName == 'MacEnt-Pod-5':
+        return "mn5"
+     elif productName == 'MacEnt-Pod-14':
+        return "mn14"   
     elif productName == 'MacEnt-Pod-3':
         return "mn3"
     elif productName == 'MacEnt-Pod-11':
